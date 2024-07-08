@@ -1,0 +1,25 @@
+version: "1.0"
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: test
+    ports:
+      - "127.0.0.1:5432:5432"
+
+  api:
+    build:
+      context: .
+      target: base
+      dockerfile: Dockerfile
+    command: sh -c "npm install && npm run start"
+    depends_on:
+      - db
+    ports:
+      - 127.0.0.1:3001:3001
+    volumes:
+      - .:/app
+      - /app/node_modules
