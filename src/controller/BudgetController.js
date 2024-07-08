@@ -1,20 +1,30 @@
 const express = require('express');
 const router = express.Router();
+const Budget = require('../model/Budget');
 
 var message = 'Bine ai venit pe pagina de buget';
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+    const records = await Budget.findAll();
 
     res.render('home', {
         title: 'BudgetMagic',
-        message: message
+        message: message,
+        tableValues: records
     });
 });
 
-router.post('/submit', (req, res) => {
+router.post('/submit', async (req, res) => {
     const option = req.body.dropdown;
     const ammount = req.body.number;
-    message = `Ai adaugat cu succes ${ammount} la categoria ${option}`;
+    const name = req.body.name;
+    message = `${name} a adaugat cu succes ${ammount} la categoria ${option}`;
+
+    await Budget.create({
+        type: option,
+        ammount: ammount,
+        name: name
+    });
 
     res.redirect('/');
     res.status(200);
