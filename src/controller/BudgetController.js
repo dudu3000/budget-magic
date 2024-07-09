@@ -1,15 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const Budget = require('../model/Budget');
+const BudgetUtil = require('../util/BudgetUtil');
 
 var message = 'Bine ai venit pe pagina de buget';
 
 router.get('/', async (req, res, next) => {
     try{
         const records = await Budget.findAll();
+
         records.map((record) => {
             record.is_mandatory = record.is_mandatory ? 'Da' : 'Nu';
             record.is_investment = record.is_investment ? 'Da' : 'Nu';
+            record.date = BudgetUtil.formatDate(record.createdAt);
         })
     
         res.render('home', {
