@@ -28,6 +28,9 @@ services:
       - /app/node_modules
     networks:
       - my_network
+    env_file:
+      - ./.env
+      - ./.env.docker
 
 networks:
   my_network:
