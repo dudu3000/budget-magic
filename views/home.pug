@@ -22,8 +22,33 @@ html
             br
             // Number field input
             label(for="number") Suma:
-            input#number(type="number" name="number")
+            input#number(type="number" name="number" required)
             span  RON
+            br
+            br
+            div Este esential?
+            label(for="option1")
+              input#option1(type="radio" name="isMandatory" value="Da")
+              | Da
+            br
+            label(for="option2")
+              input#option2(type="radio" name="isMandatory" value="Nu")
+              | Nu
+            br
+            br
+            div Este investitie?
+            label(for="option1")
+              input#option1(type="radio" name="isInvestment" value="Da")
+              | Da
+            br
+            label(for="option2")
+              input#option2(type="radio" name="isInvestment" value="Nu")
+              | Nu
+            br
+            br
+            label(for="investmentReturn") ROI:
+            input#number(type="number" name="investmentReturn", min="0", max="100", default="0")
+            span  %
             br
             br
             // Submit button
@@ -35,8 +60,14 @@ html
                 th Nume 
                 th Tip
                 th Suma
+                th Este esential
+                th Este investitie
+                th Randament estimat
             each val in tableValues
                 tr
                     td= val.name
                     td= val.type
                     td= val.ammount
+                    td= val.is_mandatory
+                    td= val.is_investment
+                    td= val.investment_return_percentage
