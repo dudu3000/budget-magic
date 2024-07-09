@@ -4,14 +4,14 @@ const sequelize = new Sequelize({
     dialect: 'postgres',
     username: 'user',
     password: 'pass',
-    host: 'localhost',
+    host: 'db',
     port: 5432,
     database: 'BudgetMagic'
 });
 
 exports.sequelize = sequelize;
 
-const Budget = require('./Budget');
+const { Budget } = require('./Budget');
 
 sequelize.sync();
 

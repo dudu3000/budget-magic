@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes, QueryTypes, uuidv4 } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const index = require('./index');
 const sequelize = index.sequelize;
 

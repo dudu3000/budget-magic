@@ -9,4 +9,4 @@ RUN npm install --frozen-lockfile
 
 RUN npm install -g nodemon
 
-EXPOSE 3001
+EXPOSE 3000
