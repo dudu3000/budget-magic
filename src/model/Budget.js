@@ -20,6 +20,22 @@ const Budget = sequelize.define('Budget', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    reason: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    is_mandatory: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    is_investment: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    investment_return_percentage: {
+        type: DataTypes.BIGINT,
+        allowNull: true
     }
 }, 
 {
