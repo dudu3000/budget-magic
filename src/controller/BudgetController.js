@@ -20,11 +20,9 @@ router.get('/', async (req, res) => {
 
 router.post('/submit', async (req, res) => {
     const option = req.body.dropdown;
-    const ammount = req.body.ammount;
-    const name = req.body.name;
     const isMandatory = req.body.isMandatory === 'on';
     const isInvestment = req.body.isInvestment === 'on';
-    const investmentReturn = req.body.investmentReturn;
+    const { ammount, name, investmentReturn, reason } = req.body;
     message = `${name} a adaugat cu succes ${ammount} la categoria ${option}`;
 
     await Budget.create({
@@ -33,7 +31,8 @@ router.post('/submit', async (req, res) => {
         name: name,
         is_mandatory: isMandatory,
         is_investment: isInvestment,
-        investment_return_percentage: investmentReturn
+        investment_return_percentage: investmentReturn,
+        reason: reason
     });
 
     res.redirect('/');

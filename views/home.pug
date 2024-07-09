@@ -29,6 +29,11 @@ html
                     input.form-control(type="number", name="ammount", placeholder="Suma")
                 br
                 br
+                div.input-group.mb-3
+                    span.input-group-text Motiv
+                    input.form-control(type="text", name="reason", placeholder="Motiv")
+                br
+                br
                 input.btn-check(type="radio", name="isMandatory", id="danger-outlined", autocomplete="off", value="off")
                 label.btn.btn-outline-danger(for="danger-outlined") NU este esential!
                 span  | 
@@ -45,7 +50,7 @@ html
                 br
                 div.input-group.mb-3
                     span.input-group-text ROI %
-                    input.form-control(type="number", name="investmentReturn", placeholder="Suma", min="0", max="100", value="0", required)
+                    input.form-control(type="number", name="investmentReturn", placeholder="ROI", min="0", max="100", value="0", required)
                 br
                 br
                 // Submit button
@@ -58,6 +63,7 @@ html
                     th Tip
                     th Suma
                     th Este esential
+                    th Motiv
                     th Este investitie
                     th Randament estimat
                 each val in tableValues
@@ -66,6 +72,7 @@ html
                         td= val.type
                         td= val.ammount
                         td= val.is_mandatory
+                        td= val.reason
                         td= val.is_investment
                         td= val.investment_return_percentage
     script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous")
