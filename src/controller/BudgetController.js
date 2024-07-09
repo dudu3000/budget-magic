@@ -20,16 +20,13 @@ router.get('/', async (req, res) => {
 
 router.post('/submit', async (req, res) => {
     const option = req.body.dropdown;
-    const ammount = req.body.number;
+    const ammount = req.body.ammount;
     const name = req.body.name;
-    const isMandatory = req.body.isMandatory === 'Da';
-    const isInvestment = req.body.isInvestment === 'Da';
+    const isMandatory = req.body.isMandatory === 'on';
+    const isInvestment = req.body.isInvestment === 'on';
     const investmentReturn = req.body.investmentReturn;
     message = `${name} a adaugat cu succes ${ammount} la categoria ${option}`;
 
-    console.log(isMandatory)
-    console.log(isInvestment)
-    console.log(req.body)
     await Budget.create({
         type: option,
         ammount: ammount,

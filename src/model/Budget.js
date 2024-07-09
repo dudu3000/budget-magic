@@ -35,7 +35,8 @@ const Budget = sequelize.define('Budget', {
     },
     investment_return_percentage: {
         type: DataTypes.BIGINT,
-        allowNull: true
+        allowNull: true,
+        defaultValue: 0
     }
 }, 
 {

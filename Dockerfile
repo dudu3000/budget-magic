@@ -9,4 +9,7 @@ RUN npm install --frozen-lockfile
 
 RUN npm install -g nodemon
 
+FROM nginx:latest
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 3000
