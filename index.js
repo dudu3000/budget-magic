@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(budgetController);
 
+app.use(function(err, req, res, next) {
+    res.redirect('/');
+});
+
 sequelize.authenticate().then(() => {
     app.listen(process.env.API_PORT, () => {
         console.log(`Listening on ${process.env.API_PORT}`);

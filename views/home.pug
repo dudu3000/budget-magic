@@ -10,23 +10,21 @@ html
             form(action="/submit" method="post")
                 div.form-floating.mb-3   
                     select#dropdown(name="dropdown" class="form-select" required)
-                        option(value="Cheltuieli" disabled selected) -- Select an option --
                         option(value="Venituri") Venituri
-                        option(value="Cheltuieli") Cheltuieli
+                        option(value="Cheltuieli" selected) Cheltuieli
                     label(for="dropdown") Categoria
                 br
                 br
                 div.form-floating.mb-3   
                     select#dropdown(name="name" class="form-select" required)
-                        option(value="Dudu" disabled selected) -- Select an option --
-                        option(value="Dudu") Dudu
+                        option(value="Dudu" selected) Dudu
                         option(value="Paula") Paula
                     label(for="dropdown") Nume
                 br
                 br
                 div.input-group.mb-3
                     span.input-group-text RON
-                    input.form-control(type="number", name="ammount", placeholder="Suma")
+                    input.form-control(type="number", name="ammount", placeholder="Suma", value="0")
                 br
                 br
                 div.input-group.mb-3
