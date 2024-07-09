@@ -1,0 +1,42 @@
+html 
+    head 
+        title= title
+    body
+        h1= message
+        br
+        br
+        form(action="/submit" method="post")
+            // Dropdown
+            label(for="dropdown") Alege categoria:
+            select#dropdown(name="dropdown")
+                option(value="Venit") Venit
+                option(value="Cheltuieli") Cheltuieli
+            br
+            br
+            // Name field
+            label(for="name") Nume:
+            select#dropdown(name="name")
+                option(value="Paula") Paula
+                option(value="Dudu") Dudu
+            br
+            br
+            // Number field input
+            label(for="number") Suma:
+            input#number(type="number" name="number")
+            span  RON
+            br
+            br
+            // Submit button
+            button(type="submit") Adauga
+        br
+        br
+        table 
+            tr 
+                th Nume 
+                th Tip
+                th Suma
+            each val in tableValues
+                tr
+                    td= val.name
+                    td= val.type
+                    td= val.ammount

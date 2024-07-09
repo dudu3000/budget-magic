@@ -1,0 +1,33 @@
+version: "1.0"
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: BudgetMagic
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - my_network
+
+  api:
+    build:
+      target: base
+      dockerfile: Dockerfile
+    command: sh -c "npm install && npm run start"
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - my_network
+
+networks:
+  my_network:
